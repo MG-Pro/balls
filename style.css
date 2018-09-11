@@ -1,0 +1,43 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+.ball {
+  width: 140px;
+  height: 140px;
+  border-radius: 70px;
+  background: linear-gradient(to top, rgba(240, 240, 240, 0.3) 0%, rgba(180, 180, 180, 0.6) 99%);
+  box-shadow: inset 0 -5px 15px rgba(255,255,255,0.4), inset -2px -1px 40px rgba(0,0,0,0.4), 0 0 1px #000;
+  position: absolute;
+}
+.ball:hover {
+  cursor: pointer;
+}
+.action {
+  position: absolute;
+  top: 15px;
+  left: 0;
+  z-index: 1000;
+  width: 100%;
+  text-align: center;
+  font-family: sans-serif;
+}
+.button {
+  width: 100px;
+  height: 30px;
+  font-size: 18px;
+}
+.counter {
+  font-size: 22px;
+  font-weight: 700;
+  color: #122b40;
+  text-align: center;
+  width: 30px;
+  display: inline-block;
+}
+.info {
+  width: 280px;
+  overflow: hidden;
+  float: right;
+
+}
