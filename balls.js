@@ -4,7 +4,7 @@ const plane = document.querySelector('.plane');
 const stop = document.querySelector('.stop');
 const add = document.querySelector('.add');
 const clear = document.querySelector('.clear');
-const infoCont = document.querySelector('.info');
+// const infoCont = document.querySelector('.info');
 const counter = document.querySelector('.counter');
 
 class Ball {
@@ -22,6 +22,7 @@ class Ball {
     this.ball.style.top = this.posY + 'px';
     this.ball.style.backgroundColor = this.color;
     this.ball.id = 'b' + (Math.floor(Math.random() * (1000 - 100)) + 100);
+    this.elemId = this.ball.id;
     this.ball.addEventListener('click', e => {
       this.remove(e);
     });
@@ -30,9 +31,11 @@ class Ball {
 
   remove(e) {
     plane.removeChild(e.target);
+    const indx = balls.findIndex(item => item.elemId === e.target.id);
+    balls.splice(indx, 1);
     counter.textContent = balls.length;
     clearInterval(this.id);
-    infoCont.removeChild(infoCont.querySelector('#' + this.ball.id));
+    // infoCont.removeChild(infoCont.querySelector('#' + this.ball.id));
   }
 
   move(speed = 2, angle = 10) {
@@ -55,15 +58,15 @@ class Ball {
       self.ball.style.left = self.posX + 'px';
       self.ball.style.top = self.posY + 'px';
 
-      if (!infoCont.querySelector('#' + self.ball.id)) {
-        const info = document.createElement('p');
-        info.classList.add('info-item');
-        info.id = self.ball.id;
-        info.style.color = self.ball.style.backgroundColor;
-        infoCont.appendChild(info);
-      }
-      infoCont.querySelector(`#${self.ball.id}`)
-        .textContent = `ID: ${self.ball.id}; color: ${self.color}; x: ${Math.round(self.posX)}; y: ${Math.round(self.posY)}`;
+      // if (!infoCont.querySelector('#' + self.ball.id)) {
+      //   const info = document.createElement('p');
+      //   info.classList.add('info-item');
+      //   info.id = self.ball.id;
+      //   info.style.color = self.ball.style.backgroundColor;
+      //   infoCont.appendChild(info);
+      // }
+      // infoCont.querySelector(`#${self.ball.id}`)
+      //   .textContent = `ID: ${self.ball.id}; color: ${self.color}; x: ${Math.round(self.posX)}; y: ${Math.round(self.posY)}`;
     }
   }
 
@@ -93,7 +96,7 @@ function stopAll(list, clear) {
     item.stop();
     if (clear) {
       plane.removeChild(item.ball);
-      infoCont.removeChild(infoCont.querySelector('.info-item'));
+      // infoCont.removeChild(infoCont.querySelector('.info-item'));
     }
   });
   if(clear) {
